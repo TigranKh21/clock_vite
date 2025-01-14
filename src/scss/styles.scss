@@ -1,0 +1,89 @@
+.hour {
+  display: flex;
+
+  &__first {
+    display: grid;
+    grid-template-columns: 30px 100px 30px;
+    grid-template-rows: repeat(2, 30px 220px) 30px;
+    justify-items: center;
+    transform: skewX(-5deg);
+  }
+}
+
+.stick {
+  --border-radius: 20px;
+
+  background-color: cornflowerblue;
+  transform: translateX(100px);
+  transform: skewX(-10);
+
+  &__vert {
+    width: 30px;
+    height: 265px;
+
+    &--top-left {
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 3;
+      align-self: start;
+      clip-path: polygon(0 1px, 30px 31px, 30px 249px, 14px 264px, 0 264px);
+      border-top-left-radius: var(--border-radius);
+      background-color: blueviolet;
+    }
+    &--top-right {
+      grid-column: 3 / span 1;
+      grid-row: 1 / span 3;
+      align-self: start;
+      clip-path: polygon(0 31px, 30px 1px, 30px 264px, 16px 264px, 0 249px);
+      border-top-right-radius: var(--border-radius);
+      background-color: blueviolet;
+    }
+    &--bottom-left {
+      grid-column: 1 / span 1;
+      grid-row: 3 / span 3;
+      align-self: end;
+      clip-path: polygon(0 1px, 14px 1px, 30px 16px, 30px 234px, 0 264px);
+      border-bottom-left-radius: var(--border-radius);
+      background-color: blueviolet;
+    }
+    &--bottom-right {
+      grid-column: 3 / span 1;
+      grid-row: 3 / span 3;
+      align-self: end;
+      clip-path: polygon(0 234px, 0 16px, 16px 1px, 100% 1px, 100% 264px);
+      border-bottom-right-radius: var(--border-radius);
+      background-color: blueviolet;
+    }
+  }
+
+  &__hor {
+    width: 160px;
+    height: 30px;
+    grid-column: 1 / -1;
+    align-self: center;
+
+    &--top {
+      grid-row: 1 / span 1;
+      clip-path: polygon(2px 0, 158px 0, 128px 30px, 32px 30px);
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+    }
+    &--middle {
+      grid-row: 3 / span 1;
+      clip-path: polygon(
+        16px 50%,
+        32px 0,
+        129px 0,
+        145px 50%,
+        129px 100%,
+        32px 100%
+      );
+      background-color: aqua;
+    }
+    &--bottom {
+      grid-row: 5 / span 1;
+      clip-path: polygon(2px 100%, 32px 0, 128px 0, 158px 100%);
+      border-bottom-left-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+    }
+  }
+}
