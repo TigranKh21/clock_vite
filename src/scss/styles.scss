@@ -1,87 +1,84 @@
 .hour {
-  display: flex;
+  --with-stick: 30px;
+  --lenght-vert-stick: calc(var(--with-stick) * 5);
+  --lenght-hor-stick: calc(var(--with-stick) * 4);
+  --border-radius: calc(var(--with-stick) * 0.7);
 
-  &__first {
+  display: flex;
+  gap: 30px;
+  transform: translateX(100px);
+
+  &__first,
+  &__second {
     display: grid;
-    grid-template-columns: 30px 100px 30px;
-    grid-template-rows: repeat(2, 30px 220px) 30px;
+    grid-template-columns: var(--with-stick) calc(var(--with-stick) * 2) var(
+        --with-stick
+      );
+    grid-template-rows:
+      repeat(2, var(--with-stick) calc(var(--with-stick) * 3.5))
+      var(--with-stick);
     justify-items: center;
     transform: skewX(-5deg);
   }
 }
 
 .stick {
-  --border-radius: 20px;
-
-  background-color: cornflowerblue;
-  transform: translateX(100px);
-  transform: skewX(-10);
+  background-color: rgb(49, 49, 49);
+  //transform: skewX(-10);
 
   &__vert {
-    width: 30px;
-    height: 265px;
+    width: var(--with-stick);
+    height: var(--lenght-vert-stick);
 
     &--top-left {
       grid-column: 1 / span 1;
       grid-row: 1 / span 3;
       align-self: start;
-      clip-path: polygon(0 1px, 30px 31px, 30px 249px, 14px 264px, 0 264px);
+      clip-path: polygon(0 0.4%, 100% 21.4%, 100% 89.1%, 41.6% 99.2%, 0 99.2%);
       border-top-left-radius: var(--border-radius);
-      background-color: blueviolet;
     }
     &--top-right {
       grid-column: 3 / span 1;
       grid-row: 1 / span 3;
       align-self: start;
-      clip-path: polygon(0 31px, 30px 1px, 30px 264px, 16px 264px, 0 249px);
+      clip-path: polygon(0 21.4%, 100% 0.4%, 100% 99.2%, 58.4% 99.2%, 0 89.1%);
       border-top-right-radius: var(--border-radius);
-      background-color: blueviolet;
     }
     &--bottom-left {
       grid-column: 1 / span 1;
       grid-row: 3 / span 3;
       align-self: end;
-      clip-path: polygon(0 1px, 14px 1px, 30px 16px, 30px 234px, 0 264px);
+      clip-path: polygon(0 0.8%, 41.6% 0.8%, 100% 10.9%, 100% 78.6%, 0 99.2%);
       border-bottom-left-radius: var(--border-radius);
-      background-color: blueviolet;
     }
     &--bottom-right {
       grid-column: 3 / span 1;
       grid-row: 3 / span 3;
       align-self: end;
-      clip-path: polygon(0 234px, 0 16px, 16px 1px, 100% 1px, 100% 264px);
+      clip-path: polygon(0 78.6%, 0 10.9%, 58.4% 0.8%, 100% 0.8%, 100% 99.2%);
       border-bottom-right-radius: var(--border-radius);
-      background-color: blueviolet;
     }
   }
 
   &__hor {
-    width: 160px;
-    height: 30px;
+    width: var(--lenght-hor-stick);
+    height: var(--with-stick);
     grid-column: 1 / -1;
     align-self: center;
 
     &--top {
       grid-row: 1 / span 1;
-      clip-path: polygon(2px 0, 158px 0, 128px 30px, 32px 30px);
+      clip-path: polygon(2.4% 0, 97.6% 0, 73.6% 100%, 26.4% 100%);
       border-top-left-radius: var(--border-radius);
       border-top-right-radius: var(--border-radius);
     }
     &--middle {
       grid-row: 3 / span 1;
-      clip-path: polygon(
-        16px 50%,
-        32px 0,
-        129px 0,
-        145px 50%,
-        129px 100%,
-        32px 100%
-      );
-      background-color: aqua;
+      clip-path: polygon(12% 50%, 26% 0, 74% 0, 88% 50%, 74% 100%, 26% 100%);
     }
     &--bottom {
       grid-row: 5 / span 1;
-      clip-path: polygon(2px 100%, 32px 0, 128px 0, 158px 100%);
+      clip-path: polygon(2.4% 100%, 26.4% 0, 73.6% 0, 97.6% 100%);
       border-bottom-left-radius: var(--border-radius);
       border-bottom-right-radius: var(--border-radius);
     }
