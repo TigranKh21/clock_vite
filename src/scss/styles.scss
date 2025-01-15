@@ -1,3 +1,7 @@
+.color {
+  background-color: rgb(49, 49, 49);
+}
+
 .hour {
   --with-stick: 30px;
   --lenght-vert-stick: calc(var(--with-stick) * 5);
@@ -5,7 +9,7 @@
   --border-radius: calc(var(--with-stick) * 0.7);
 
   display: flex;
-  gap: 30px;
+  gap: var(--with-stick);
   transform: translateX(100px);
 
   &__first,
@@ -23,7 +27,6 @@
 }
 
 .stick {
-  background-color: rgb(49, 49, 49);
   //transform: skewX(-10);
 
   &__vert {
@@ -34,28 +37,28 @@
       grid-column: 1 / span 1;
       grid-row: 1 / span 3;
       align-self: start;
-      clip-path: polygon(0 0.4%, 100% 21.4%, 100% 89.1%, 41.6% 99.2%, 0 99.2%);
+      clip-path: polygon(0 0.4%, 100% 21.4%, 100% 89%, 41.6% 99.2%, 0 91%);
       border-top-left-radius: var(--border-radius);
     }
     &--top-right {
       grid-column: 3 / span 1;
       grid-row: 1 / span 3;
       align-self: start;
-      clip-path: polygon(0 21.4%, 100% 0.4%, 100% 99.2%, 58.4% 99.2%, 0 89.1%);
+      clip-path: polygon(0 21.4%, 100% 0.4%, 100% 93%, 58.4% 99.2%, 0 89.1%);
       border-top-right-radius: var(--border-radius);
     }
     &--bottom-left {
       grid-column: 1 / span 1;
       grid-row: 3 / span 3;
       align-self: end;
-      clip-path: polygon(0 0.8%, 41.6% 0.8%, 100% 10.9%, 100% 78.6%, 0 99.2%);
+      clip-path: polygon(0 8%, 41.6% 0.8%, 100% 10.9%, 100% 78.6%, 0 99.2%);
       border-bottom-left-radius: var(--border-radius);
     }
     &--bottom-right {
       grid-column: 3 / span 1;
       grid-row: 3 / span 3;
       align-self: end;
-      clip-path: polygon(0 78.6%, 0 10.9%, 58.4% 0.8%, 100% 0.8%, 100% 99.2%);
+      clip-path: polygon(0 78.6%, 0 10.9%, 58.4% 0.8%, 100% 8%, 100% 99.2%);
       border-bottom-right-radius: var(--border-radius);
     }
   }
