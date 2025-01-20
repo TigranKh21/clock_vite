@@ -50,30 +50,61 @@ const base = {
   ],
 };
 
-function setDigitStyles(digit) {
-  const counter = base[digit].length;
-
+function clearAll() {
   const classes = base[8];
-  for (let i = 0; i < 7; i++) {
-    let element = document.querySelector(`.${classes[i]}`);
-    element.classList.remove("color");
-    console.log(element);
-  }
-  for (let i = 0; i < counter; i++) {
-    const onClasses = base[digit];
-    console.log(onClasses);
 
-    let element = document.querySelector(`.${onClasses[i]}`);
-    element.classList.add("color");
-    console.log(element);
+  for (let i = 0; i < 7; i++) {
+    const elements = document.querySelectorAll(`.${classes[i]}`);
+    elements.forEach(element => {
+      if (element.classList.contains('color'))
+        element.classList.remove("color");
+    })
   }
 }
 
-setDigitStyles(0);
+function setDigitStyles(timeUnit, position, amount) {
+  const counter = base[amount].length;
+
+  for (let i = 0; i < counter; i++) {
+    const onClasses = base[amount];
+      const element = document.querySelector(`.${timeUnit} .${position} .${onClasses[i]}`);
+      console.log(element);
+      
+      if (position === "first" & amount === 0) {
+        continue
+      } else {
+      element.classList.add("color");
+    }
+  }
+}
+
+function timeUnit(unit) {
+  
+}
 
 setInterval(() => {
   const myDate = new Date();
+  const hours = myDate.getHours();
+  const minutes = myDate.getMinutes();
   const seconds = myDate.getSeconds();
 
-  setDigitStyles(seconds % 10);
+  const hourUnitSecond = hours % 10;
+  const hourUnitFirst = Math.floor(hours / 10)
+  console.log(hourUnitFirst, hourUnitSecond);
+
+  const minUnitSecond = minutes % 10;
+  const minUnitFirst = Math.floor(minutes / 10)
+  console.log(minUnitFirst, minUnitSecond);
+
+  const secUnitSecond = seconds % 10;
+  const secUnitFirst = Math.floor(seconds / 10)
+  console.log(secUnitFirst, secUnitSecond);
+  
+  clearAll();
+  // setDigitStyles('hours', 'first', secUnitFirst);
+  // setDigitStyles('hours', 'second', secUnitSecond);
+  setDigitStyles('minutes', 'first', secUnitFirst);
+  setDigitStyles('minutes', 'second', secUnitSecond);
+  setDigitStyles('seconds', 'first', secUnitFirst);
+  setDigitStyles('seconds', 'second', secUnitSecond);
 }, 1000);

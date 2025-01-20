@@ -1,26 +1,33 @@
+$color-stick: rgb(49, 49, 49);
+$with-stick: 30px;
+$height-vert-stick: $with-stick * 5;
+$width-hor-stick: $with-stick * 4; 
+$border-radius: $with-stick * 0.7;
+$width-devider: $with-stick / 1.2;
+$digit-height: $with-stick * 10;
+
+
 .color {
-  background-color: rgb(49, 49, 49);
+  background-color: $color-stick;
 }
 
-.hour {
-  --with-stick: 30px;
-  --lenght-vert-stick: calc(var(--with-stick) * 5);
-  --lenght-hor-stick: calc(var(--with-stick) * 4);
-  --border-radius: calc(var(--with-stick) * 0.7);
+.hours,
+.minutes,
+.seconds {
 
   display: flex;
-  gap: var(--with-stick);
+  gap: $with-stick;
   transform: translateX(100px);
 
   &__first,
   &__second {
     display: grid;
-    grid-template-columns: var(--with-stick) calc(var(--with-stick) * 2) var(
-        --with-stick
-      );
+    grid-template-columns: $with-stick $with-stick * 2
+        $with-stick
+      ;
     grid-template-rows:
-      repeat(2, var(--with-stick) calc(var(--with-stick) * 3.5))
-      var(--with-stick);
+      repeat(2, $with-stick $with-stick * 3.5)
+      $with-stick;
     justify-items: center;
     transform: skewX(-5deg);
   }
@@ -30,50 +37,50 @@
   //transform: skewX(-10);
 
   &__vert {
-    width: var(--with-stick);
-    height: var(--lenght-vert-stick);
+    width: $with-stick;
+    height: $height-vert-stick;
 
     &--top-left {
       grid-column: 1 / span 1;
       grid-row: 1 / span 3;
       align-self: start;
       clip-path: polygon(0 0.4%, 100% 21.4%, 100% 89%, 41.6% 99.2%, 0 91%);
-      border-top-left-radius: var(--border-radius);
+      border-top-left-radius: $border-radius;
     }
     &--top-right {
       grid-column: 3 / span 1;
       grid-row: 1 / span 3;
       align-self: start;
       clip-path: polygon(0 21.4%, 100% 0.4%, 100% 93%, 58.4% 99.2%, 0 89.1%);
-      border-top-right-radius: var(--border-radius);
+      border-top-right-radius: $border-radius;
     }
     &--bottom-left {
       grid-column: 1 / span 1;
       grid-row: 3 / span 3;
       align-self: end;
       clip-path: polygon(0 8%, 41.6% 0.8%, 100% 10.9%, 100% 78.6%, 0 99.2%);
-      border-bottom-left-radius: var(--border-radius);
+      border-bottom-left-radius: $border-radius;
     }
     &--bottom-right {
       grid-column: 3 / span 1;
       grid-row: 3 / span 3;
       align-self: end;
       clip-path: polygon(0 78.6%, 0 10.9%, 58.4% 0.8%, 100% 8%, 100% 99.2%);
-      border-bottom-right-radius: var(--border-radius);
+      border-bottom-right-radius: $border-radius;
     }
   }
 
   &__hor {
-    width: var(--lenght-hor-stick);
-    height: var(--with-stick);
+    width: $width-hor-stick;
+    height: $with-stick;
     grid-column: 1 / -1;
     align-self: center;
 
     &--top {
       grid-row: 1 / span 1;
       clip-path: polygon(2.4% 0, 97.6% 0, 73.6% 100%, 26.4% 100%);
-      border-top-left-radius: var(--border-radius);
-      border-top-right-radius: var(--border-radius);
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
     }
     &--middle {
       grid-row: 3 / span 1;
@@ -82,8 +89,32 @@
     &--bottom {
       grid-row: 5 / span 1;
       clip-path: polygon(2.4% 100%, 26.4% 0, 73.6% 0, 97.6% 100%);
-      border-bottom-left-radius: var(--border-radius);
-      border-bottom-right-radius: var(--border-radius);
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
     }
+  }
+}
+
+.devider {
+  display: grid;
+  width: $width-devider;
+  height: $digit-height;
+  row-gap: $width-devider * 2;
+  transform: skewX(-5deg);
+
+  &__dot {
+  width: $width-devider;
+  aspect-ratio: 1 / 2;
+  background-color: $color-stick;
+  border-radius: $width-devider;
+
+  &--top {
+    align-self: end;
+  }
+
+  &--bottom {
+    align-self: start;
+  }
+
   }
 }
