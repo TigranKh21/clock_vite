@@ -1,11 +1,18 @@
 $color-stick: rgb(49, 49, 49);
-$with-stick: 30px;
+$with-stick: 10px;
 $height-vert-stick: $with-stick * 5;
 $width-hor-stick: $with-stick * 4; 
 $border-radius: $with-stick * 0.7;
-$width-devider: $with-stick / 1.2;
+$devider-width: $with-stick / 1.2;
 $digit-height: $with-stick * 10;
+$digit-width: $with-stick * 4;
 
+.container {
+  display: inline-grid;
+  grid-auto-columns: auto;
+  grid-template-areas: 'hours devider-1 minutes devider-2 seconds';
+  gap: $with-stick;
+}
 
 .color {
   background-color: $color-stick;
@@ -15,9 +22,11 @@ $digit-height: $with-stick * 10;
 .minutes,
 .seconds {
 
-  display: flex;
-  gap: $with-stick;
-  transform: translateX(100px);
+  display: grid;
+  grid-template-columns: repeat(2, $digit-width);
+  //transform: translateX(100px);
+  column-gap: $with-stick / 2;
+  width: (2 * $digit-width) + ($with-stick / 2);
 
   &__first,
   &__second {
@@ -33,9 +42,27 @@ $digit-height: $with-stick * 10;
   }
 }
 
-.stick {
-  //transform: skewX(-10);
+.hours {
+  grid-area: hours;
+  grid-template-areas: 'first-hour second-hour';
 
+  &__first {
+    grid-area: first-hour;
+  }
+
+  &__second {
+    grid-area: second-hour;
+  }
+}
+
+.minutes {
+  grid-area: minutes;
+}
+
+.seconds {
+  grid-area: seconds;
+}
+.stick {
   &__vert {
     width: $with-stick;
     height: $height-vert-stick;
@@ -96,17 +123,25 @@ $digit-height: $with-stick * 10;
 }
 
 .devider {
+  &--1 {
+    grid-area: devider-1;
+  }
+
+  &--2 {
+    grid-area: devider-2;
+  }
+
   display: grid;
-  width: $width-devider;
+  width: $devider-width;
   height: $digit-height;
-  row-gap: $width-devider * 2;
+  row-gap: $devider-width * 2;
   transform: skewX(-5deg);
 
   &__dot {
-  width: $width-devider;
+  width: $devider-width;
   aspect-ratio: 1 / 2;
   background-color: $color-stick;
-  border-radius: $width-devider;
+  border-radius: $devider-width;
 
   &--top {
     align-self: end;

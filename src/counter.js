@@ -68,18 +68,8 @@ function setDigitStyles(timeUnit, position, amount) {
   for (let i = 0; i < counter; i++) {
     const onClasses = base[amount];
       const element = document.querySelector(`.${timeUnit} .${position} .${onClasses[i]}`);
-      console.log(element);
-      
-      if (position === "first" & amount === 0) {
-        continue
-      } else {
       element.classList.add("color");
-    }
   }
-}
-
-function timeUnit(unit) {
-  
 }
 
 setInterval(() => {
@@ -101,10 +91,10 @@ setInterval(() => {
   console.log(secUnitFirst, secUnitSecond);
   
   clearAll();
-  // setDigitStyles('hours', 'first', secUnitFirst);
-  // setDigitStyles('hours', 'second', secUnitSecond);
-  setDigitStyles('minutes', 'first', secUnitFirst);
-  setDigitStyles('minutes', 'second', secUnitSecond);
+  setDigitStyles('hours', 'first', hourUnitFirst);
+  setDigitStyles('hours', 'second', hourUnitSecond);
+  setDigitStyles('minutes', 'first', minUnitFirst);
+  setDigitStyles('minutes', 'second', minUnitSecond);
   setDigitStyles('seconds', 'first', secUnitFirst);
   setDigitStyles('seconds', 'second', secUnitSecond);
 }, 1000);
