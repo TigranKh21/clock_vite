@@ -1,13 +1,3 @@
-// export function setupCounter(element) {
-//   let counter = 0;
-//   const setCounter = (count) => {
-//     counter = count;
-//     element.innerHTML = `count is ${counter}`;
-//   };
-//   element.addEventListener("click", () => setCounter(counter + 1));
-//   setCounter(0);
-// }
-
 const base = {
   0: [
     "js-top",
@@ -80,15 +70,12 @@ setInterval(() => {
 
   const hourUnitSecond = hours % 10;
   const hourUnitFirst = Math.floor(hours / 10)
-  console.log(hourUnitFirst, hourUnitSecond);
 
   const minUnitSecond = minutes % 10;
   const minUnitFirst = Math.floor(minutes / 10)
-  console.log(minUnitFirst, minUnitSecond);
 
   const secUnitSecond = seconds % 10;
   const secUnitFirst = Math.floor(seconds / 10)
-  console.log(secUnitFirst, secUnitSecond);
   
   clearAll();
   setDigitStyles('hours', 'first', hourUnitFirst);
@@ -98,3 +85,11 @@ setInterval(() => {
   setDigitStyles('seconds', 'first', secUnitFirst);
   setDigitStyles('seconds', 'second', secUnitSecond);
 }, 1000);
+
+setInterval(()=>{
+  const myDate = new Date();
+const deviders = document.querySelectorAll('.js-devider');
+deviders.forEach(devider => {
+  devider.classList.toggle('hidden')
+})
+}, 500)

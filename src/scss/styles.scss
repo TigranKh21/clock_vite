@@ -1,4 +1,4 @@
-$color-stick: rgb(49, 49, 49);
+$color-stick: rgb(1, 58, 122);
 $with-stick: 10px;
 $height-vert-stick: $with-stick * 5;
 $width-hor-stick: $with-stick * 4; 
@@ -145,11 +145,14 @@ $digit-width: $with-stick * 4;
 
   &--top {
     align-self: end;
-  }
+    }
 
   &--bottom {
     align-self: start;
+    }
   }
+}
 
-  }
+.hidden {
+  visibility: hidden;
 }
